@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: campuspass-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: campuspass
+      POSTGRES_USER: campuspass
+      POSTGRES_PASSWORD: campuspass
+    ports:
+      - "5432:5432"
+    volumes:
+      - campuspass-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U campuspass -d campuspass"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  campuspass-postgres-data:
