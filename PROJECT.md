@@ -5,7 +5,7 @@
 **Название команды:** MNM sweg
 **Название продукта:** CampusPass
 **Коды участников:** `M1`, `M2`, `M3`
-**Статус ранней калибровки:** `черновик`
+**Статус ранней калибровки:** `согласованно`
 
 ## 1. Назначение
 
@@ -134,7 +134,24 @@ CampusPass — серверное приложение для регистрац
 минимальный ASP.NET Core API с PostgreSQL, миграцией начальной схемы и endpoint `GET /health`; затем — создание и чтение опубликованных мероприятий.
 
 ## 10. Локальный запуск
-
-
-Раздел будет заполнен после появления запускаемой технической основы, обязательно к EK1.
-
+ 
+**Требования к окружению:** .NET 10 SDK, Docker Desktop, Git.
+ 
+**Запуск:**
+ 
+```powershell
+docker compose up -d postgres
+dotnet restore src\CampusPass.Api\CampusPass.Api.csproj
+dotnet run --project src\CampusPass.Api
+```
+ 
+Миграции применяются автоматически при старте приложения. API поднимается на `http://localhost:5000`.
+ 
+**Проверка работоспособности:**
+ 
+- `GET http://localhost:5000/health` — при успешном подключении к базе возвращает `{"status": "ok", "database": "ok"}`;
+- `GET http://localhost:5000/api/events` — возвращает список опубликованных мероприятий (на первом запуске создаётся демонстрационное `CampusPass Demo Workshop`);
+- `http://localhost:5000/swagger` — интерактивное описание API.
+**Остановка:** `Ctrl+C`, затем `docker compose down` (добавить `-v`, только если нужно сбросить данные PostgreSQL).
+ 
+**Реализовано к текущей точке:** ASP.NET Core Web API, PostgreSQL + EF Core с начальной миграцией, `GET /health`, `GET /api/events`, Swagger/OpenAPI, Docker Compose для локального PostgreSQL. Аутентификация, авторизация и регистрация участников — на следующих этапах.
