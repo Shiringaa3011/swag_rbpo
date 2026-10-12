@@ -23,17 +23,16 @@ using (var scope = app.Services.CreateScope())
 
     if (!await db.Events.AnyAsync())
     {
-        db.Events.Add(new Event
-        {
-            Id = Guid.NewGuid(),
-            Title = "CampusPass Demo Workshop",
-            Description = "Demo published event for EK1.",
-            StartsAt = DateTime.UtcNow.AddDays(7),
-            Capacity = 30,
-            RegisteredCount = 0,
-            AuthorId = Guid.NewGuid(),
-            State = EventState.Published
-        });
+        var utcNow = DateTime.UtcNow;
+        var demo = Event.Create(
+            "CampusPass Demo Workshop",
+            "Demo published event for EK1.",
+            utcNow.AddDays(7),
+            30,
+            Guid.NewGuid(),
+            utcNow);
+        demo.State = EventState.Published;
+        db.Events.Add(demo);
 
         await db.SaveChangesAsync();
     }

@@ -1,7 +1,9 @@
 # swag_rbpo — CampusPass
  
 Проект по РБПО.
- 
+
+- [S06_EVIDENCE.md](S06_EVIDENCE.md) — подтверждение серверной валидации мероприятия
+
 - [`PROJECT.md`](PROJECT.md) — паспорт проекта
 - [`security-requirements.md`](security-requirements.md) — требования безопасности `SR-*`
 - [`THREAD_MODEL.md`](THREAD_MODEL.md) — модель угроз `T-*`
