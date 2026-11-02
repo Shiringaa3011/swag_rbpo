@@ -1,21 +1,46 @@
 services:
   postgres:
     image: postgres:17
-    container_name: campuspass-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: campuspass
-      POSTGRES_USER: campuspass
-      POSTGRES_PASSWORD: campuspass
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: ${POSTGRES_DB:-campuspass}
+      POSTGRES_USER: ${POSTGRES_USER:-campuspass}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-campuspass-local-only}
     volumes:
       - campuspass-postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U campuspass -d campuspass"]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}",
+        ]
       interval: 5s
-      timeout: 5s
-      retries: 10
+      timeout: 4s
+      start_period: 5s
+      retries: 12
+
+  api:
+    image: campuspass:local
+    build:
+      context: .
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${APP_PORT:-8080}:8080"
+    environment:
+      APP_LABEL: ${APP_LABEL:-campuspass-compose}
+      ConnectionStrings__CampusPass: >-
+        Host=postgres;Port=5432;Database=${POSTGRES_DB:-campuspass};
+        Username=${POSTGRES_USER:-campuspass};
+        Password=${POSTGRES_PASSWORD:-campuspass-local-only}
+    healthcheck:
+      test: ["CMD", "dotnet", "CampusPass.Api.dll", "--healthcheck"]
+      interval: 5s
+      timeout: 4s
+      start_period: 10s
+      retries: 12
 
 volumes:
   campuspass-postgres-data:

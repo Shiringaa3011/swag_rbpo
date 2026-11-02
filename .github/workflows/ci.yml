@@ -1,0 +1,68 @@
+name: S08 Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+
+      - name: Record checked version
+        shell: bash
+        run: |
+          mkdir -p Evidence
+          {
+            echo "checked_commit=$(git rev-parse HEAD)"
+            echo "event_commit=$GITHUB_SHA"
+            echo "run_id=$GITHUB_RUN_ID"
+            echo "run_attempt=$GITHUB_RUN_ATTEMPT"
+            echo "event=$GITHUB_EVENT_NAME"
+            echo "sdk=$(dotnet --version)"
+          } > Evidence/run-info.txt
+          dotnet --info > Evidence/dotnet-info.txt
+
+      - name: Restore
+        run: dotnet restore tests/CampusPass.Api.Tests/CampusPass.Api.Tests.csproj --locked-mode
+
+      - name: Build
+        run: dotnet build tests/CampusPass.Api.Tests/CampusPass.Api.Tests.csproj --configuration Release --no-restore
+
+      - name: Test
+        run: >
+          dotnet test tests/CampusPass.Api.Tests/CampusPass.Api.Tests.csproj
+          --configuration Release --no-build --no-restore
+          --logger "trx;LogFileName=s08-tests.trx"
+          --results-directory TestResults
+
+      - name: Publish application
+        run: >
+          dotnet publish src/CampusPass.Api/CampusPass.Api.csproj
+          --configuration Release --no-restore --output Publish
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: s08-evidence-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            Evidence/
+            TestResults/
+            Publish/
+          if-no-files-found: warn
+          retention-days: 30

@@ -134,24 +134,28 @@ CampusPass — серверное приложение для регистрац
 минимальный ASP.NET Core API с PostgreSQL, миграцией начальной схемы и endpoint `GET /health`; затем — создание и чтение опубликованных мероприятий.
 
 ## 10. Локальный запуск
- 
-**Требования к окружению:** .NET 10 SDK, Docker Desktop, Git.
- 
-**Запуск:**
- 
+
+**Требования к окружению:** Git, Docker с Compose и .NET SDK из feature band 10.0.4xx. Точная базовая версия зафиксирована в `global.json`.
+
+**Воспроизводимый запуск стенда:**
+
 ```powershell
-docker compose up -d postgres
-dotnet restore src\CampusPass.Api\CampusPass.Api.csproj
-dotnet run --project src\CampusPass.Api
+Copy-Item .env.example .env
+docker compose up --build --wait --wait-timeout 180
 ```
- 
-Миграции применяются автоматически при старте приложения. API поднимается на `http://localhost:5000`.
- 
+
+На macOS/Linux вместо первой команды используется `cp .env.example .env`. Compose собирает образ CampusPass, ожидает готовности PostgreSQL, применяет миграции при старте API и публикует его на `http://localhost:8080`.
+
 **Проверка работоспособности:**
- 
-- `GET http://localhost:5000/health` — при успешном подключении к базе возвращает `{"status": "ok", "database": "ok"}`;
-- `GET http://localhost:5000/api/events` — возвращает список опубликованных мероприятий (на первом запуске создаётся демонстрационное `CampusPass Demo Workshop`);
-- `http://localhost:5000/swagger` — интерактивное описание API.
-**Остановка:** `Ctrl+C`, затем `docker compose down` (добавить `-v`, только если нужно сбросить данные PostgreSQL).
- 
-**Реализовано к текущей точке:** ASP.NET Core Web API, PostgreSQL + EF Core с начальной миграцией, `GET /health`, `GET /api/events`, Swagger/OpenAPI, Docker Compose для локального PostgreSQL. Аутентификация, авторизация и регистрация участников — на следующих этапах.
+
+- `GET http://localhost:8080/health` — `{"status":"ok","database":"ok"}`;
+- `GET http://localhost:8080/info` — публичная метка стенда из `APP_LABEL`;
+- `GET http://localhost:8080/api/events` — только опубликованные мероприятия, включая демо-запись после первого запуска;
+- `http://localhost:8080/swagger` — интерактивное описание API;
+- `docker compose ps` — оба сервиса имеют статус `healthy`.
+
+**Остановка:** `docker compose down`. Том с базой сохраняется. Для явного полного сброса учебных данных используется `docker compose down --volumes`.
+
+Локальная сборка, тесты, параметры стенда и GitHub Actions описаны в `README.md`.
+
+**Реализовано к текущей точке:** ASP.NET Core Web API, PostgreSQL + EF Core с начальной миграцией, `GET /health`, `GET /info`, `GET /api/events`, Swagger/OpenAPI, многоэтапный непривилегированный образ, Compose-стенд, тесты и CI-свидетельства с привязкой к версии. Аутентификация, авторизация и регистрация участников — на следующих этапах.

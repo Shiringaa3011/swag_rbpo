@@ -2,6 +2,29 @@ using CampusPass.Api.Data;
 using CampusPass.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
+// Тот же бинарный файл выполняет HTTP-пробу без curl в runtime-образе.
+if (args.Length == 1 && args[0] == "--healthcheck")
+{
+    try
+    {
+        using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(3) };
+        var url = Environment.GetEnvironmentVariable("CAMPUSPASS_HEALTH_URL")
+            ?? "http://127.0.0.1:8080/health";
+        using var response = await client.GetAsync(url);
+        Environment.ExitCode = response.IsSuccessStatusCode ? 0 : 1;
+    }
+    catch (HttpRequestException)
+    {
+        Environment.ExitCode = 1;
+    }
+    catch (TaskCanceledException)
+    {
+        Environment.ExitCode = 1;
+    }
+
+    return;
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -42,6 +65,12 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapControllers();
+app.MapGet("/info", (IConfiguration configuration) =>
+    Results.Ok(new
+    {
+        service = "CampusPass",
+        label = configuration["APP_LABEL"] ?? "campuspass-local"
+    }));
 
 app.Run();
 

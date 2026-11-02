@@ -13,6 +13,10 @@
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    <!-- Перекрывает уязвимую транзитивную версию из EF Design/MSBuild. -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.21">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

@@ -31,3 +31,10 @@
 - **Использование ИИ:** на основе `PROJECT.md`, `security-requirements.md` и `design-decisions.md` ИИ сгенерировал в `src/CampusPass.Api` каркас ASP.NET Core Web API: подключение к PostgreSQL через EF Core, начальную миграцию, `GET /health`, `GET /api/events`, Docker Compose для локального PostgreSQL.
 - **Проверка человеком:** код запущен локально по инструкции из `PROJECT.md` (раздел 10), проверены `/health` и `/api/events`; структура каталогов и зависимости сверены с выбранным стеком.
 - **Связанный результат:** `src/CampusPass.Api`, раздел 10 `PROJECT.md`.
+
+## Перенос каркаса S08 в CampusPass
+
+- **Участник:** `M2`.
+- **Использование ИИ:** помог сверить настройки CI и Docker с условиями S08, подготовить их черновик и разобрать предупреждение об уязвимой зависимости.
+- **Проверка:** `M2` проверила и приняла конфигурацию; сборка, пять тестов, аудит зависимостей и Compose-стенд прошли успешно.
+- **Связанный результат:** `.github/workflows/`, `Dockerfile`, `docker-compose.yml`, `global.json`, `README.md`.
