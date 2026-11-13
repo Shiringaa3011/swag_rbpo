@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7be4e80d-c0bc-44d8-9a42-1803993706f4" name="@Masas-MacBook-Air 2026-11-13 16:02:06" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-13T16:02:06.4793210+07:00" queuing="2026-11-13T16:02:06.4793210+07:00" start="2026-11-13T16:02:06.0103340+07:00" finish="2026-11-13T16:02:06.4811480+07:00" />
+  <TestSettings name="default" id="3ec217aa-9367-470d-9e16-725d6bd719c1">
+    <Deployment runDeploymentRoot="_Masas-MacBook-Air_2026-11-13_16_02_06" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="58a4e923-6760-42e1-972d-78a4ddab4a12" testId="882084c9-ebbc-0546-2426-341c4f62bc13" testName="CampusPass.Api.Tests.EventValidationTests.Create_RejectsNonPositiveCapacity(capacity: 0)" computerName="Masas-MacBook-Air" duration="00:00:00.0003293" startTime="2026-11-13T16:02:06.4301630+07:00" endTime="2026-11-13T16:02:06.4301950+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="58a4e923-6760-42e1-972d-78a4ddab4a12" />
+    <UnitTestResult executionId="149ecc8c-2eb8-4ec0-9854-59bd21eda5f0" testId="07f31163-d370-a4b9-19fa-7b1e2202460e" testName="CampusPass.Api.Tests.EventValidationTests.Create_RejectsNonPositiveCapacity(capacity: -1)" computerName="Masas-MacBook-Air" duration="00:00:00.0000540" startTime="2026-11-13T16:02:06.4303710+07:00" endTime="2026-11-13T16:02:06.4303910+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="149ecc8c-2eb8-4ec0-9854-59bd21eda5f0" />
+    <UnitTestResult executionId="3f1a34f7-812d-439b-b015-cd4ab52f27fd" testId="63fa9508-ad9a-ec74-a6ec-537c153bb678" testName="CampusPass.Api.Tests.EventValidationTests.Create_AcceptsFutureEventWithPositiveCapacity" computerName="Masas-MacBook-Air" duration="00:00:00.0018344" startTime="2026-11-13T16:02:06.4305000+07:00" endTime="2026-11-13T16:02:06.4305190+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f1a34f7-812d-439b-b015-cd4ab52f27fd" />
+    <UnitTestResult executionId="f3044899-d54c-4f94-8cba-c31a7444f030" testId="22bf7b70-20e0-ce4b-84f1-df4342c18355" testName="CampusPass.Api.Tests.EventValidationTests.Create_RejectsStartTimeThatIsNotInFuture" computerName="Masas-MacBook-Air" duration="00:00:00.0000692" startTime="2026-11-13T16:02:06.4304490+07:00" endTime="2026-11-13T16:02:06.4304630+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3044899-d54c-4f94-8cba-c31a7444f030" />
+    <UnitTestResult executionId="911ce858-d5a6-4306-b447-aa4d2da7bea5" testId="f8996679-c153-592a-a405-ff2276fd2b73" testName="CampusPass.Api.Tests.EventValidationTests.GetPublished_DoesNotReturnDraftEvents" computerName="Masas-MacBook-Air" duration="00:00:00.1880236" startTime="2026-11-13T16:02:06.2369260+07:00" endTime="2026-11-13T16:02:06.4268660+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="911ce858-d5a6-4306-b447-aa4d2da7bea5" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CampusPass.Api.Tests.EventValidationTests.Create_RejectsStartTimeThatIsNotInFuture" storage="/users/masaurkevic/downloads/swag_rbpo/tests/campuspass.api.tests/bin/debug/net10.0/campuspass.api.tests.dll" id="22bf7b70-20e0-ce4b-84f1-df4342c18355">
+      <Execution id="f3044899-d54c-4f94-8cba-c31a7444f030" />
+      <TestMethod codeBase="/Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/bin/Debug/net10.0/CampusPass.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CampusPass.Api.Tests.EventValidationTests" name="Create_RejectsStartTimeThatIsNotInFuture" />
+    </UnitTest>
+    <UnitTest name="CampusPass.Api.Tests.EventValidationTests.Create_AcceptsFutureEventWithPositiveCapacity" storage="/users/masaurkevic/downloads/swag_rbpo/tests/campuspass.api.tests/bin/debug/net10.0/campuspass.api.tests.dll" id="63fa9508-ad9a-ec74-a6ec-537c153bb678">
+      <Execution id="3f1a34f7-812d-439b-b015-cd4ab52f27fd" />
+      <TestMethod codeBase="/Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/bin/Debug/net10.0/CampusPass.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CampusPass.Api.Tests.EventValidationTests" name="Create_AcceptsFutureEventWithPositiveCapacity" />
+    </UnitTest>
+    <UnitTest name="CampusPass.Api.Tests.EventValidationTests.Create_RejectsNonPositiveCapacity(capacity: 0)" storage="/users/masaurkevic/downloads/swag_rbpo/tests/campuspass.api.tests/bin/debug/net10.0/campuspass.api.tests.dll" id="882084c9-ebbc-0546-2426-341c4f62bc13">
+      <Execution id="58a4e923-6760-42e1-972d-78a4ddab4a12" />
+      <TestMethod codeBase="/Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/bin/Debug/net10.0/CampusPass.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CampusPass.Api.Tests.EventValidationTests" name="Create_RejectsNonPositiveCapacity" />
+    </UnitTest>
+    <UnitTest name="CampusPass.Api.Tests.EventValidationTests.Create_RejectsNonPositiveCapacity(capacity: -1)" storage="/users/masaurkevic/downloads/swag_rbpo/tests/campuspass.api.tests/bin/debug/net10.0/campuspass.api.tests.dll" id="07f31163-d370-a4b9-19fa-7b1e2202460e">
+      <Execution id="149ecc8c-2eb8-4ec0-9854-59bd21eda5f0" />
+      <TestMethod codeBase="/Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/bin/Debug/net10.0/CampusPass.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CampusPass.Api.Tests.EventValidationTests" name="Create_RejectsNonPositiveCapacity" />
+    </UnitTest>
+    <UnitTest name="CampusPass.Api.Tests.EventValidationTests.GetPublished_DoesNotReturnDraftEvents" storage="/users/masaurkevic/downloads/swag_rbpo/tests/campuspass.api.tests/bin/debug/net10.0/campuspass.api.tests.dll" id="f8996679-c153-592a-a405-ff2276fd2b73">
+      <Execution id="911ce858-d5a6-4306-b447-aa4d2da7bea5" />
+      <TestMethod codeBase="/Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/bin/Debug/net10.0/CampusPass.Api.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CampusPass.Api.Tests.EventValidationTests" name="GetPublished_DoesNotReturnDraftEvents" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="882084c9-ebbc-0546-2426-341c4f62bc13" executionId="58a4e923-6760-42e1-972d-78a4ddab4a12" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07f31163-d370-a4b9-19fa-7b1e2202460e" executionId="149ecc8c-2eb8-4ec0-9854-59bd21eda5f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="63fa9508-ad9a-ec74-a6ec-537c153bb678" executionId="3f1a34f7-812d-439b-b015-cd4ab52f27fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="22bf7b70-20e0-ce4b-84f1-df4342c18355" executionId="f3044899-d54c-4f94-8cba-c31a7444f030" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f8996679-c153-592a-a405-ff2276fd2b73" executionId="911ce858-d5a6-4306-b447-aa4d2da7bea5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Список результатов" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Все загруженные результаты" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="5" executed="5" passed="5" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.03]   Discovering: CampusPass.Api.Tests
+[xUnit.net 00:00:00.04]   Discovered:  CampusPass.Api.Tests
+[xUnit.net 00:00:00.05]   Starting:    CampusPass.Api.Tests
+[xUnit.net 00:00:00.25]   Finished:    CampusPass.Api.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

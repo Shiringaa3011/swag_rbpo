@@ -7,6 +7,8 @@
 - [`THREAD_MODEL.md`](THREAD_MODEL.md) — модель угроз `T-*`
 - [`design-decisions.md`](design-decisions.md) — проектные решения безопасности `D-*`
 - [`S06_EVIDENCE.md`](S06_EVIDENCE.md) — подтверждение серверной валидации мероприятия
+- [`S09_EVIDENCE.md`](S09_EVIDENCE.md) — S09: проверка SAST и истории Git на секреты, первичные результаты и ограничения
+- [`S09_FINDINGS.md`](S09_FINDINGS.md) — S09: реестр решений и контекстных проверок
 - [`CONTRIBUTIONS.md`](CONTRIBUTIONS.md) — вклад участников
 - [`AI_USAGE.md`](AI_USAGE.md) — использование генеративного ИИ
 
