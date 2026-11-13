@@ -1,0 +1,20 @@
+Source commit: 1a8a3a149d74d03a17e17df4d5a74cc42c2f914d
+Branch: s09-security-maria
+Git version: git version 2.50.1 (Apple Git-155)
+Docker version: Docker version 29.9.3, build 5457199
+UTC time: 2026-11-13T09:01:52Z
+Working tree before scans:
+?? reports/
+SAST scope: src/, tests/ C#; Semgrep auto rules (network dependent)
+Secrets scope: all reachable Git refs (--all); Gitleaks default rules
+Semgrep exit code: 0
+Gitleaks exit code: 126
+Semgrep image: semgrep/semgrep:1.175.0
+Gitleaks image: ghcr.io/gitleaks/gitleaks:v8.30.1
+Note: 0=completed clean, 1 may indicate findings (verify logs); other codes may indicate errors.
+10.0.404
+dotnet test exit code: 0
+Source commit on second run: 1a8a3a149d74d03a17e17df4d5a74cc42c2f914d
+UTC second run: 2026-11-13T09:05:33Z
+Gitleaks corrected exit code: 0
+Semgrep rerun exit code: 0

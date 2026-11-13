@@ -1,0 +1,10 @@
+  Определение проектов для восстановления...
+  Восстановлен /Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/CampusPass.Api.Tests.csproj (за 3,21 с).
+  Восстановлен /Users/masaurkevic/Downloads/swag_rbpo/src/CampusPass.Api/CampusPass.Api.csproj (за 3,22 с).
+  CampusPass.Api -> /Users/masaurkevic/Downloads/swag_rbpo/src/CampusPass.Api/bin/Debug/net10.0/CampusPass.Api.dll
+  CampusPass.Api.Tests -> /Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/bin/Debug/net10.0/CampusPass.Api.Tests.dll
+Тестовый запуск для /Users/masaurkevic/Downloads/swag_rbpo/tests/CampusPass.Api.Tests/bin/Debug/net10.0/CampusPass.Api.Tests.dll (.NETCoreApp,Version=v10.0)
+Общее количество тестовых файлов (1), соответствующих указанному шаблону.
+Файл результатов: /Users/masaurkevic/Downloads/swag_rbpo/reports/s09/s09-tests.trx
+
+Пройден!   : не пройдено     0, пройдено     5, пропущено     0, всего     5, длительность 193 ms. - CampusPass.Api.Tests.dll (net10.0)
